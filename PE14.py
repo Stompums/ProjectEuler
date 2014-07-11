@@ -21,19 +21,16 @@ def Collatz(n):
     else:
         n = 3*n+1
     return n
-Chain_Length = [0]
-Tested = [0]
+Chain_Length = {1:1}
 n = 1
 while n < 1e6:
     k,i = n,1
-    Tested.append(n)
     while k != 1:
         k = Collatz(k)
         i += 1
-        if k in Tested:
+        if k in Chain_Length:
             i = i + Chain_Length[k]
             break
-    Chain_Length.append(i)
+    Chain_Length[n] = i
     n += 1
-
-print Chain_Length.index(max(Chain_Length))
+print max(Chain_Length, key = Chain_Length.get)
