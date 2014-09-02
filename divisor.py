@@ -31,14 +31,28 @@ def countdivisors(n):     #Counts the number of divisors that a number, n has. S
 	for i in PrimeList:
 	    count = count*(PrimeDivisorList.count(i)+1)
 	return count
-
+"""
 def primes(x):         #Build a list of prime numbers less than n.
-	prime_list,k = [2],3
-	while k<=x:
-		if all(k%i!=0 for i in prime_list):
-			prime_list.append(k)
-		k+=2
-	return prime_list
+    prime_list,k = [2],3
+    while k<=x:
+        if all(k%i!=0 for i in prime_list):
+            prime_list.append(k)
+        k+=2
+    return prime_list
+"""
+def primes(x):        #Builds a list of prime numbers less than n. It's bulkier but faster.
+    primelist,k=[2,3],5
+    while k<=x:
+        if all(k%i!=0 for i in primelist):
+            primelist.append(k)
+        k+=2
+        if k>x:
+            break
+        elif all(k%i!=0 for i in primelist):
+            primelist.append(k)
+        k+=4
+    return primelist
+
 
 def TriangleDivisors(n):   #Count the number of divisors of the sum of the first n integers.
 	if n%2==0:
