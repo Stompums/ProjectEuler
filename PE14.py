@@ -27,10 +27,10 @@ while n < 1e6:
     k,i = n,1
     while k != 1:
         k = Collatz(k)
-        if k in Chain_Length:
-            i = i + Chain_Length[k] - 1
-            break
         i += 1
+        if k in Chain_Length:
+            i = i + Chain_Length[k]
+            break
     Chain_Length[n] = i
     n += 1
 print max(Chain_Length, key = Chain_Length.get)
