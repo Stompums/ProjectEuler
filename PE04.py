@@ -18,13 +18,13 @@ def palindrome(string): #A testing function to determine whether or not a string
         return False
 
 n = 900                 #Starting at 900 to reduce the number of calculations
-products = {}           #Dictionary used to store products and their palindrome state of True or False
+products ={}            #Dictionary used to store products and their palindrome state of True or False
 sweet_list = []         #Used to store palindrome products.
 while n < 1000:
-    for i in range(1000 - n):
-        products[n * (n + i)] = palindrome(str(n * (n + i)))
+    for i in range(1000-n):
+        products[n*(n+i)] = palindrome(str(n*(n+i)))
     n += 1
 for keys in products:
-    if products[keys] == True:
+    if products[keys]==True:
         sweet_list.append(keys)
 print max(sweet_list)
